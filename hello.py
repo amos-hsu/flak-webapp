@@ -1,4 +1,5 @@
 import os
+from threading import Thread
 from datetime import datetime
 from flask import Flask, render_template, session, redirect, url_for, flash
 from flask_bootstrap import Bootstrap
@@ -119,4 +120,4 @@ def user(name):
 
 if __name__ == '__main__':
     app.run(debug=True)
-    manager.run()
+    #manager.run()
