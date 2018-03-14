@@ -4,16 +4,11 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
-    MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.163.com')
-    MAIL_PORT = int(os.environ.get('MAIL_PORT', '25'))
-    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS', 'true').lower() in \
-        ['true', 'on', '1']
-    MAIL_USERNAME = 'xuhuiyue_hit@163.com' #os.environ.get('MAIL_USERNAME')
-    MAIL_PASSWORD = 'R%1023' #os.environ.get('MAIL_PASSWORD')
+    SQLALCHEMY_COMMIT_TEARDOWN = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
     FLASKY_MAIL_SUBJECT_PREFIX = '[Flasky]'
-    FLASKY_MAIL_SENDER = 'xuhuiyue_hit@163.com' #'Flasky Admin <flasky@example.com>'
+    FLASKY_MAIL_SENDER = '751654494@qq.com' #'Flasky Admin <flasky@example.com>'
     FLASKY_ADMIN = '751654494@qq.com' #os.environ.get('FLASKY_ADMIN')
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     @staticmethod
     def init_app(app):
@@ -22,6 +17,11 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
+    MAIL_SERVER = 'smtp.qq.com'
+    MAIL_PORT = '25'
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = '751654494@qq.com' #os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = 'lqapwpzdzifebfhb' #os.environ.get('MAIL_PASSWORD')
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
 
